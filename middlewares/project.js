@@ -4,7 +4,7 @@ const file = "./data/project.json";
 module.exports = {
   search: () => {
     return new Promise((reply, reject) => {
-      fs.readFile(file, 'utf8', function (error,data) {
+      fs.readFile(file, 'utf8',  (error,data)=> {
         if(error) return reject({ details: "error cargando datos", error });
           return reply(JSON.parse(data));
       });
@@ -12,7 +12,7 @@ module.exports = {
   },
   find: (id_project) => {
     return new Promise((reply, reject) => {
-      fs.readFile(file, 'utf8', function (error,data) {
+      fs.readFile(file, 'utf8',  (error,data)=> {
         if(error)return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
           for(var i in obj){
@@ -26,8 +26,18 @@ module.exports = {
   },
   add: (params) => {
     return new Promise((reply, reject) => {
-      //no debe aceptar nombres iguales
-      return reply("add value [project]");
+      fs.readFile(file, 'utf8', (error,data)=>{
+          if(error) return reject({ details: "error cargando datos", error });
+          const obj = JSON.parse(data);
+          obj.push(params);
+          console.log(params);
+          console.log(obj);
+          fs.writeFile(file, JSON.stringify(obj), function(err) {
+              if(err) return console.log(err);
+              return reply({details: "Saved correctly"});
+          }); 
+      });
+      //return reply("add value [project]");
     })
   },
   update: (id_project, params) => {

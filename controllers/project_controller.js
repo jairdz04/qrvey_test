@@ -25,6 +25,7 @@ exports.getProjectById = (req, res)=>{
 
 exports.postProject = (req, res)=>{
 	const params = req.body;
+	//console.log(params);
 	co(function*() {
 		const project = yield Project.add(params);
 		res.json(project);
