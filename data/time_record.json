@@ -1,0 +1,7 @@
+[
+	{ "name": "my first time_record", "hours": 3, "minutes": 30 , "seconds": 0,"description": "This is the description of my first  task"},
+	{ "name": "my second time_record", "hours": 4, "minutes": 20, "seconds": 0,"description": "This is the description of my second task"},
+	{ "name": "my third time_record", "hours": 1, "minutes": 45, "seconds": 0,"description": "This is the description of my third task"},
+	{ "name": "my last time_record", "hours": 2, "minutes": 53,"seconds": 0,"description": "This is the description of my last task"}
+]
+

@@ -12,7 +12,7 @@ exports.getAllTasks = (req, res)=>{
 };
 
 exports.getTaskById = (req, res)=>{
-	const id_task = req.params.id_task;
+	const id_task = req.params.id;
 	co(function*() {
 		const task = yield Task.find(id_task);
 		if(!task) return res.status(404).send({});
@@ -34,7 +34,7 @@ exports.postTask = (req, res)=>{
 };
 exports.putTask = (req, res)=>{
 	const params = req.body;
-	const id_task = req.params.id_task;
+	const id_task = req.params.id;
 	co(function*() {
 		const task = yield Task.update(id_task, params);
 		res.json(task);
@@ -45,7 +45,7 @@ exports.putTask = (req, res)=>{
 };
 
 exports.deleteTask = (req, res)=>{
-	const id_task = req.params.id_task;
+	const id_task = req.params.id;
 	co(function*() {
 		const task = yield Task.delete(id_task);
 		res.json(task);

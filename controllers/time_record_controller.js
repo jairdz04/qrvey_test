@@ -12,7 +12,7 @@ exports.getAllTimesRecords = (req, res)=>{
 };
 
 exports.getTimeRecordById = (req, res)=>{
-	const id_time_record = req.params.id_time_record;
+	const id_time_record = req.params.id;
 	co(function*() {
 		const times = yield Time.find(id_time_record);
 		if(!times) return res.status(404).send({});
@@ -35,7 +35,7 @@ exports.postTimeRecord = (req, res)=>{
 
 exports.putTimeRecord = (req, res)=>{
 	const params = req.body;
-	const id_time_record = req.params.id_time_record;
+	const id_time_record = req.params.id;
 	co(function*() {
 		const times = yield Time.update(id_time_record, params);
 		res.json(times);
@@ -46,7 +46,7 @@ exports.putTimeRecord = (req, res)=>{
 };
 
 exports.deleteTimeRecord = (req, res)=>{
-	const id_time_record = req.params.id_time_record;
+	const id_time_record = req.params.id;
 	co(function*() {
 		const times = yield Time.delete(id_time_record);
 		res.json(times);

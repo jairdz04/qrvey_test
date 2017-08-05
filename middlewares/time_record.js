@@ -1,10 +1,13 @@
 const fs = require('fs');
-const file = "/data/times";
+const file = "./data/time_record.json";
 
 module.exports = {
   search: () => {
     return new Promise((reply, reject) => {
-         return reply("getting values [times]");
+      fs.readFile(file, 'utf8', function (error,data) {
+        if(error) return reject({ details: "error cargando datos", error });
+          return reply(JSON.parse(data));
+      });
     });
   },
   find: (id_time_record) => {

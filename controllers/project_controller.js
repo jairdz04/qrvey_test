@@ -12,7 +12,7 @@ exports.getAllProjects = (req, res)=>{
 };
 
 exports.getProjectById = (req, res)=>{
-	const id_project = req.params.id_project;
+	const id_project = req.params.id;
 	co(function*() {
 		const project = yield Project.find(id_project);
 		if(!project) return res.status(404).send({});
@@ -36,10 +36,10 @@ exports.postProject = (req, res)=>{
 
 exports.putProject = (req, res)=>{
 	const params = req.body;
-	const id_project = req.params.id_project;
+	const id_project = req.params.id;
 	co(function*() {
-		const afiliado = yield Project.update(id_project, params);
-		res.json(afiliado);
+		const project = yield Project.update(id_project, params);
+		res.json(project);
 	}).catch(error => {
 		console.log(error);
 		res.status(500).send();
@@ -47,10 +47,10 @@ exports.putProject = (req, res)=>{
 };
 
 exports.deleteProject = (req, res)=>{
-	const id_project = req.params.id_project;
+	const id_project = req.params.id;
 	co(function*() {
-		const afiliado = yield Project.delete(id_project);
-		res.json(afiliado);
+		const project = yield Project.delete(id_project);
+		res.json(project);
 	}).catch(error => {
 		console.log(error);
 		res.status(500).send();

@@ -1,10 +1,13 @@
 const fs = require('fs');
-const file = "/data/task";
+const file = "./data/task.json";
 
 module.exports = {
   search: () => {
     return new Promise((reply, reject) => {
-         return reply("getting values [tasks]");
+      fs.readFile(file, 'utf8', function (error,data) {
+        if(error) return reject({ details: "error cargando datos", error });
+          return reply(JSON.parse(data));
+      });
     });
   },
   find: (id_task) => {
