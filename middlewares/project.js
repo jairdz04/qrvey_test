@@ -35,7 +35,7 @@ module.exports = {
       fs.readFile(file, 'utf8', (error,data)=>{
           if(error) return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
-          const newProject = {"id_project": date.getDate(), "name": params.name, "description": params.description};
+          const newProject = {"id_project": parseInt(date.getDate()), "name": params.name, "description": params.description};
           obj.push(newProject);
           fs.writeFile(file, JSON.stringify(obj), function(err) {
               if(err) return console.log(err);
@@ -46,6 +46,7 @@ module.exports = {
   },
   update: (id_project, params) => {
     return new Promise((reply, reject) => {
+        var bandera = false;
        fs.readFile(file, 'utf8', (error,data)=>{
           if(error) return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
@@ -54,12 +55,17 @@ module.exports = {
               obj[i].id_project = parseInt(id_project);
               obj[i].name = params.name;
               obj[i].description = params.description;
+              bandera = true;
             }
           }
-          fs.writeFile(file, JSON.stringify(obj), function(error) {
-              if(error) return console.log(error);
-              return reply({details: "Updated correctly"});
-          }); 
+          if(bandera){
+              fs.writeFile(file, JSON.stringify(obj), function(error) {
+                if(error) return console.log(error);
+                return reply({details: "Updated correctly"});
+             }); 
+          }else{
+             return reply({details: "the record doesnt exist,nothing to update"});
+          }
       });
 
     })

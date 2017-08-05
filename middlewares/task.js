@@ -37,7 +37,7 @@ module.exports = {
       fs.readFile(file, 'utf8', (error,data)=>{
           if(error) return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
-          const newProject = {"id_task": date.getDate(),"id_time_record": params.id_time_record ,"name": params.name, "date": params.date ,"description": params.description};
+          const newProject = {"id_task": parseInt(date.getDate()),"id_time_record": params.id_time_record ,"name": params.name, "date": params.date ,"description": params.description};
           obj.push(newProject);
           fs.writeFile(file, JSON.stringify(obj), function(err) {
               if(err) return console.log(err);
@@ -48,22 +48,28 @@ module.exports = {
   },
   update: (id_task, params) => {
     return new Promise((reply, reject) => {
+        var bandera = false;
        fs.readFile(file, 'utf8', (error,data)=>{
           if(error) return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
           for(var i in obj){
             if(obj[i].id_task == id_task){
               obj[i].id_task = parseInt(id_task);
-              obj[i].id_time_record = parseInt(id_task);
+              obj[i].id_time_record = parseInt(params.id_time_record);
               obj[i].name = params.name;
               obj[i].date = params.date;
               obj[i].description = params.description;
+              bandera = true;
             }
           }
-          fs.writeFile(file, JSON.stringify(obj), function(error) {
-              if(error) return console.log(error);
-              return reply({details: "Updated correctly"});
-          }); 
+          if(bandera){
+              fs.writeFile(file, JSON.stringify(obj), function(error) {
+                if(error) return console.log(error);
+                return reply({details: "Updated correctly"});
+              }); 
+          }else{
+             return reply({details: "the record doesnt exist,nothing to update"});           
+          }
       });
 
     })
