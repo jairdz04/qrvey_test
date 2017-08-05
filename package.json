@@ -1,0 +1,14 @@
+{
+  "name": "prueba_qrvey",
+  "description": "backend",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "co": "^4.6.0",
+    "cors": "^2.8.3",
+    "express": "latest",
+    "express-validation": "^1.0.2",
+    "joi": "^10.6.0"
+  }
+}
