@@ -7,7 +7,12 @@ module.exports = {
     return new Promise((reply, reject) => {
       fs.readFile(file, 'utf8',  (error,data)=> {
         if(error) return reject({ details: "error cargando datos", error });
-          return reply(JSON.parse(data));
+          const obj = JSON.parse(data);
+            if(obj.length > 0){
+              return reply(JSON.parse(data));
+            }else{
+              return reply({details: "no records found"});
+            }
       });
     });
   },
@@ -18,11 +23,10 @@ module.exports = {
           const obj = JSON.parse(data);
           for(var i in obj){
             if(obj[i].id_project == id_project){
-              console.log("aqui");
                return reply(obj[i]);
             }
           }
-        return reply({details: "not found records"});
+        return reply({details: "no found records"});
       });
     })
   },
@@ -31,8 +35,8 @@ module.exports = {
       fs.readFile(file, 'utf8', (error,data)=>{
           if(error) return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
-          const newPorject = {"id_project": date.getDate(), "name": params.name, "description": params.description};
-          obj.push(newPorject);
+          const newProject = {"id_project": date.getDate(), "name": params.name, "description": params.description};
+          obj.push(newProject);
           fs.writeFile(file, JSON.stringify(obj), function(err) {
               if(err) return console.log(err);
               return reply({details: "Saved correctly"});
@@ -52,8 +56,8 @@ module.exports = {
               obj[i].description = params.description;
             }
           }
-          fs.writeFile(file, JSON.stringify(obj), function(err) {
-              if(err) return console.log(err);
+          fs.writeFile(file, JSON.stringify(obj), function(error) {
+              if(error) return console.log(error);
               return reply({details: "Updated correctly"});
           }); 
       });
@@ -75,9 +79,9 @@ module.exports = {
               }
             } 
             if(bandera = true){
-              fs.writeFile(file, JSON.stringify(newData), function(err) {
-                  if(err) return console.log(err);
-                  return reply({details: "Updated correctly"});
+              fs.writeFile(file, JSON.stringify(newData), function(error) {
+                  if(error) return reject({ details: "error cargando datos", error })
+                  return reply({details: "Deleted correctly"});
               }); 
             }else{
               return reply("no record to delete");                              
