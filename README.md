@@ -3,6 +3,7 @@
 <h3>Description</h3>
 <p>The idea is to develop an app that allows to take tracking of times (similar to Toggl.com)
 </br> base url : http://127.0.0.1:3000/api
+</br> Run application: node server.js
 </br> 
 </p>
 <h3>Projects</h3>
