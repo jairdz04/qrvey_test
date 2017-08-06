@@ -35,7 +35,7 @@ module.exports = {
       fs.readFile(file, 'utf8', (error,data)=>{
           if(error) return reject({ details: "error cargando datos", error });
           const obj = JSON.parse(data);
-          const newProject = {"id_time_record": parseInt(date.getDate()), "name": params.name,"hours":params.hours , "minutes":params.minutes,"seconds":params.seconds , "description": params.description};
+          const newProject = {"id_time_record": parseInt(date.getDate()), "name": params.name,"hours":params.hours , "minutes":params.minutes,"seconds":params.seconds , "finish": params.finish,"description": params.description};
           obj.push(newProject);
           fs.writeFile(file, JSON.stringify(obj), function(err) {
               if(err) return console.log(err);
@@ -57,6 +57,7 @@ module.exports = {
               obj[i].hours= params.hours;
               obj[i].minutes= params.minutes;
               obj[i].seconds= params.seconds;
+              obj[i].finish = params.finish;
               obj[i].description = params.description;
               bandera = true;
             }

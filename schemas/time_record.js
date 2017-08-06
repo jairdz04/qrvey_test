@@ -5,10 +5,11 @@ module.exports = {
 		body: {
 			id_time_record: joi.any(),
 			name: joi.any(),
-			hours: joi.number(),
-			minutes: joi.number().min(1).max(59),
-			seconds: joi.number().min(1).max(59),
-			description: joi.string()
+			description: joi.string(),
+			finish: joi.number().min(0).max(1).required(),
+			hours: joi.number().required(),
+			minutes: joi.number().min(1).max(59).required(),
+			seconds: joi.number().min(1).max(59).required()
 		}
 	}
 }

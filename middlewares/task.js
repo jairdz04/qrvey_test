@@ -41,7 +41,7 @@ module.exports = {
           verify.task_record(time,params.id_time_record, (result) =>{
             console.log(result);
               if(!result) return reply({details: "Error, id_time_record doesn´t exist"});
-              const newProject = {"id_task": parseInt(date.getDate()),"id_time_record": parseInt(params.id_time_record) ,"name": params.name, "date": params.date ,"description": params.description};
+              const newProject = {"id_task": parseInt(date.getDate()),"id_time_record": parseInt(params.id_time_record) ,"name": params.name, "date": params.date ,"finish": params.finish,"description": params.description};
               obj.push(newProject);
               fs.writeFile(file, JSON.stringify(obj), function(err) {
                   if(err) return console.log(err);
@@ -66,6 +66,7 @@ module.exports = {
                     obj[i].id_time_record = parseInt(params.id_time_record);
                     obj[i].name = params.name;
                     obj[i].date = params.date;
+                    obj[i].finish = params.finish;
                     obj[i].description = params.description;
                     bandera = true;
                   }
