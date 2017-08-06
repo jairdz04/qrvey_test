@@ -13,29 +13,42 @@ var options = {
 describe('Gets', function() {
     describe ('Proving getters ', function() {
         it('get projects', function(){
-            req('http://localhost:3000/api/project', function(error,response, body) {
-                console.log(body);
-                expect(response.statusCode).to.equal(200);
+            chai.request(server)
+            .get('/api/project')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('id_project');
+                done();
             });
         });
 
         it('get tasks', function() {
-          req('http://localhost:3000/api/task' , function(error,response, body) {
-                console.log(body);
-             	expect(response.statusCode).to.equal(200);
+            chai.request(server)
+            .get('/api/task')
+            .end((err, res) => {
+                res.should.have.status(200);
+                 res.body.should.have.property('id_task');
+                done();
             });
         });
 
         it('get time_records', function() {
-          req('http://localhost:3000/api/time-record' , function(error,response, body) {
-                console.log(body);
-             	expect(response.statusCode).to.equal(200);
+            chai.request(server)
+            .get('/api/time-record')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('id_time_record');
+                done();
             });
         });
         it('get project_task', function() {
-          req('http://localhost:3000/api/project-task' , function(error,response, body) {
-                console.log(body);
-             	expect(response.statusCode).to.equal(200);
+            chai.request(server)
+            .get('/api/project-task')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.have.property('id_project');
+                res.body.should.have.property('id_task');
+                done();
             });
         });
 	});
