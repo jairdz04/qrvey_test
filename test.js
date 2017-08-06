@@ -10,9 +10,9 @@ var options = {
     url: 'http://localhost',
     port: 3000,
 };
-describe('Gets', function() {
-    describe ('Proving getters ', function() {
-        it('get projects', function(){
+describe('Gets', ()=> {
+    describe ('Proving getters ', ()=> {
+        it('get projects', ()=>{
             chai.request(server)
             .get('/api/project')
             .end((err, res) => {
@@ -22,7 +22,7 @@ describe('Gets', function() {
             });
         });
 
-        it('get tasks', function() {
+        it('get tasks', ()=> {
             chai.request(server)
             .get('/api/task')
             .end((err, res) => {
@@ -32,7 +32,7 @@ describe('Gets', function() {
             });
         });
 
-        it('get time_records', function() {
+        it('get time_records', ()=> {
             chai.request(server)
             .get('/api/time-record')
             .end((err, res) => {
@@ -41,7 +41,7 @@ describe('Gets', function() {
                 done();
             });
         });
-        it('get project_task', function() {
+        it('get project_task', ()=> {
             chai.request(server)
             .get('/api/project-task')
             .end((err, res) => {
@@ -54,9 +54,9 @@ describe('Gets', function() {
 	});
 });
 
-describe('Gets by id', function() {
-    describe ('Proving gets by id', function() {
-        it('get by id project', function(){
+describe('Gets by id', ()=>{
+    describe ('Proving gets by id', ()=>{
+        it('get by id project', ()=>{
             var id_project = 201786113127;
         	chai.request(server)
             .get('/api/project/' + id_project)
@@ -66,7 +66,7 @@ describe('Gets by id', function() {
             });
         });
 
-        it('get by id task', function() {
+        it('get by id task', () =>{
          	var id_task = 201786102936;
         	chai.request(server)
             .get('/api/task/' + id_task)
@@ -76,7 +76,7 @@ describe('Gets by id', function() {
             });
         });
 
-        it('get by id time_record', function() {
+        it('get by id time_record', () =>{
          	var id_time_record = 201786103155;
         	chai.request(server)
             .get('/api/time-record/' + id_time_record)
@@ -91,7 +91,7 @@ describe('Gets by id', function() {
 
 describe('Posts', ()=> {
     describe ('proving posts', ()=> {
-    	it('post projects',(done)=> {
+    	it('post projects',()=> {
 		    var project = {
 	            name: "test project",
 	            description: "Mocha test project"
@@ -99,7 +99,7 @@ describe('Posts', ()=> {
 		     chai.request(server)
 		    .post('/api/project/add')
 		    .send(project)
-		    .end(function(err, res) {
+		    .end((err, res) =>{
 		        if (err) done(err);
 		        res.should.have.status(200);
 		        res.body.should.have.property('details');
@@ -107,7 +107,7 @@ describe('Posts', ()=> {
 		     });
 		 });
 
-        it('post tasks', function() {
+        it('post tasks', () =>{
 	        var task = {
 				id_time_record: 201786102936,
 				name: "Test task",
@@ -118,14 +118,14 @@ describe('Posts', ()=> {
 		    chai.request(server)
 		    .post('/api/task/add')
 		    .send(task)
-		    .end(function(err, res) {
+		    .end((err, res) =>{
 		        if (err) done(err);
 		        res.should.have.status(200);
 		        done();
 		     });
         });
 
-        it('post time_records', function() {
+        it('post time_records', () =>{
           	var time_records = {
 				name: "Test time record",
 				description: "Proving time record form mocha",
@@ -137,13 +137,13 @@ describe('Posts', ()=> {
 		    chai.request(server)
 		    .post('/api/time-record/add')
 		    .send(time_records)
-		    .end(function(err, res) {
+		    .end((err, res)=>{
 		        if (err) done(err);
 		        res.should.have.status(200);
 		        done();
 		     });
         });
-        it('post project_task', function() {
+        it('post project_task', () =>{
           var project_task = {
 				id_project: 201786113127,
 				id_task: 201786103155
@@ -151,7 +151,7 @@ describe('Posts', ()=> {
 		    chai.request(server)
 		    .post('/api/project-task/add')
 		    .send(project_task)
-		    .end(function(err, res) {
+		    .end((err, res)=> {
 		        if (err) done(err);
 		        res.should.have.status(200);
 		        done();
@@ -160,9 +160,9 @@ describe('Posts', ()=> {
 	});
 });
 
-describe('Put by id', function() {
-    describe ('proving put', function() {
-        it('Put projects', function(){
+describe('Put by id', ()=> {
+    describe ('proving put', () =>{
+        it('Put projects', ()=>{
         	var project = {
         		id_project: 201786113127,
 	            name: "test project",
@@ -177,7 +177,7 @@ describe('Put by id', function() {
             });
         });
 
-        it('put tasks', function() {
+        it('put tasks', ()=> {
          	var task = {
          		id_task: 201786103155,
 				id_time_record: 201786102936,
@@ -195,7 +195,7 @@ describe('Put by id', function() {
             });
         });
 
-        it('put time_records', function() {
+        it('put time_records', ()=> {
           	var time_records = {
           		id_time_record: 201786102936,
 				name: "Test time record",
@@ -216,9 +216,9 @@ describe('Put by id', function() {
 	});
 });
 
-describe('deletes', function() {
-    describe ('proving deletes', function() {
-        it('get by id project', function(){
+describe('deletes', () =>{
+    describe ('proving deletes', ()=> {
+        it('get by id project', ()=>{
             var id_project = 201786113127;
         	chai.request(server)
             .get('/api/project/delete/' + id_project)
@@ -228,7 +228,7 @@ describe('deletes', function() {
             });
         });
 
-        it('get by id task', function() {
+        it('get by id task', () =>{
          	var id_task = 201786103155;
         	chai.request(server)
             .get('/api/task/delete/' + id_task)
@@ -238,7 +238,7 @@ describe('deletes', function() {
             });
         });
 
-        it('get by id time_record', function() {
+        it('get by id time_record', () =>{
          	var id_time_record = 201786102936;
         	chai.request(server)
             .get('/api/time-record/delete/' + id_time_record)
