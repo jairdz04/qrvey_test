@@ -16,33 +16,33 @@ module.exports = {
 		 });
 		 
 	},
-	projeck_task: (file_project, file_task , id_project, id_task, callback)=>{
+	project: (file_project, id_project, callback)=>{
 		return new Promise((reply, reject)=>{
-			var count = 0;
 			fs.readFile(file_project, 'utf8',  (error,data)=> {
 				if(error) return reject({ details: "error cargando datos", error });
 				const obj = JSON.parse(data);
 				for(var i in obj){
 			 		if(obj[i].id_project == id_project){
-			 			count++;
+			 			return callback(true);
 			 		}
 			 	}
-
+			 	 return callback(false);
 			});
-
+		});
+	},
+	task: (file_task,id_task, callback)=>{
+		return new Promise((reply, reject)=>{
 			 fs.readFile(file_task, 'utf8',  (error,data)=> {
 			 	if(error) return reject({ details: "error cargando datos", error });
 			 	const obj = JSON.parse(data);
 			 	for(var i in obj){
 			 		if(obj[i].id_task == id_task){
-			 			count++;
+			 			return callback(true);
 			 		}
 			 	}
+			 	return callback(false);
 			 });
-
-			 if(count == 2)return callback(true);
-			 return callback(false);
-		});
+		})
 	}
 }
 

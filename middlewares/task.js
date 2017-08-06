@@ -60,7 +60,7 @@ module.exports = {
           const obj = JSON.parse(data);
           verify.task_record(time,params.id_time_record, (result) =>{
               console.log(result);
-            if(!rusult)return reply({details: "Error, id_time_record doesn´t exist"});
+            if(!result)return reply({details: "Error, id_time_record doesn´t exist"});
                for(var i in obj){
                   if(obj[i].id_task == id_task){
                     obj[i].id_task = parseInt(id_task);
@@ -114,15 +114,22 @@ module.exports = {
     return new Promise((reply, reject)=>{
       fs.readFile(file, 'utf8', (error, data)=>{
         const obj = JSON.parse(data);
+
+        order.orderChronologically(obj,'id_task',(callback)=>{
+            console.log(callback);
+        });
+        return reply({details: "true"});
       });
     })
-
   },
 
   orderByDay: ()=>{
     return new Promise((reply, reject)=>{
       fs.readFile(file, 'utf8', (error, data)=>{
         const obj = JSON.parse(data);
+        order.orderByDay(obj);
+        return reply({details: "true"});
+
       });
     })
 

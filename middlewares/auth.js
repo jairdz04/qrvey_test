@@ -2,8 +2,8 @@ var twitter = require("node-twitter-api");
 
 tw = new twitter({
  	consumerKey: 'r5S0KYoWgOsiZbvZH6lw4QPYU',
-	consumerSecret: 'U1mh9aIzWnauWTbeALItzhjqncpotUjNBi8FqkMIA7Byzimi9d'
-	//callback: 'http://127.0.0.1:3000/api/access-token'
+	consumerSecret: 'U1mh9aIzWnauWTbeALItzhjqncpotUjNBi8FqkMIA7Byzimi9d',
+	callback: 'http://127.0.0.1:3000/api/access-token'
 });
 
 
