@@ -20,7 +20,30 @@ exports.getTaskById = (req, res)=>{
 	}).catch(error => {
 		console.log(error);
 		res.status(500).send();
-	});};
+	});
+};
+
+exports.getRecentToOldestTask = (req, res)=>{
+	co(function*() {
+		const tasks_chronologically = yield Task.orderByTime();
+		res.json(tasks_chronologically);
+	}).catch(error => {
+		console.log(error);
+		res.status(500).send();
+	});
+};
+
+exports.getTaskGroupByDay = (req, res)=>{
+	co(function*() {
+		const tasks_day = yield Task.orderByDay();
+		res.json(tasks_day);
+	}).catch(error => {
+		console.log(error);
+		res.status(500).send();
+	});
+
+};
+
 
 exports.postTask = (req, res)=>{
 	const params = req.body;

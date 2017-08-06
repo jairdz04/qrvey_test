@@ -15,6 +15,8 @@ router.delete('/project/delete/:id', project.deleteProject);
 const task = require('../controllers/task_controller');
 const sch_task = require('../schemas/task');
 router.get('/task',task.getAllTasks);
+router.get('/task-by-order', task.getRecentToOldestTask);
+router.get('task-day', task.getTaskGroupByDay);
 router.get('/task/:id',task.getTaskById);
 router.post('/task/add',validate(sch_task.task) ,task.postTask);
 router.put('/task/edit/:id',validate(sch_task.task),task.putTask);

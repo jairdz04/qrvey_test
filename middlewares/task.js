@@ -1,6 +1,7 @@
 const fs = require('fs');
 const date = require("../helpers/getDate");
 const verify = require("../helpers/verifyKeys");
+const order = require("../helpers/orderData");
 const file = "./data/task.json";
 const time = "./data/time_record.json";
 
@@ -107,5 +108,23 @@ module.exports = {
             }
         });
     })
+  },
+
+  orderByTime: ()=>{
+    return new Promise((reply, reject)=>{
+      fs.readFile(file, 'utf8', (error, data)=>{
+        const obj = JSON.parse(data);
+      });
+    })
+
+  },
+
+  orderByDay: ()=>{
+    return new Promise((reply, reject)=>{
+      fs.readFile(file, 'utf8', (error, data)=>{
+        const obj = JSON.parse(data);
+      });
+    })
+
   }
 }
