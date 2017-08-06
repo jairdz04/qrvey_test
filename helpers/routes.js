@@ -24,5 +24,6 @@ router.post('/time_record/add',time_record.postTimeRecord);
 router.put('/time_record/edit/:id',time_record.putTimeRecord);
 router.delete('/time_record/delete/:id', time_record.deleteTimeRecord);
 
+const auth = require('../controllers/time_record_controller');
 
 module.exports = router;
