@@ -127,9 +127,10 @@ module.exports = {
     return new Promise((reply, reject)=>{
       fs.readFile(file, 'utf8', (error, data)=>{
         const obj = JSON.parse(data);
-        order.orderByDay(obj);
+        order.orderByDay(obj, callback=>{
+          console.log(callback);
+        });
         return reply({details: "true"});
-
       });
     })
 

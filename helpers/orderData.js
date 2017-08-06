@@ -7,10 +7,15 @@ module.exports = {
 		}
 	},
 
-	orderByDay: (data)=>{
-		var days = {};
-		var values = {};
-		for(var i in data){
+	orderByDay: (data, callback)=>{
+		//var days = {};
+		//var values = {};
+		data.sort((a,b)=>{
+		  // Turn your strings into dates, and then subtract them
+		  // to get a value that is either negative, positive, or zero.
+		  return callback(new Date(b.date) - new Date(a.date));
+		});
+		/*for(var i in data){
 			if(data[i].finish == 1){
 				if(days.indexOf(data[i]) > -1){
 					//values.[days.indexOf(data[i])].push({task: data[i]});
@@ -21,7 +26,7 @@ module.exports = {
 			 console.log(days);
 			 console.log(values);			
 			}
-		}
+		}*/
 	}
 }
 
