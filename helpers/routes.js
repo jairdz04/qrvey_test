@@ -28,6 +28,8 @@ router.post('/time_record/add',validate(sch_time.time_record),time_record.postTi
 router.put('/time_record/edit/:id',validate(sch_time.time_record),time_record.putTimeRecord);
 router.delete('/time_record/delete/:id', time_record.deleteTimeRecord);
 
-const auth = require('../controllers/time_record_controller');
+const auth = require('../controllers/auth_controller');
+router.get('/request-token', auth.getTokenRequest);
+router.get('/access-token', auth.accessToken);
 
 module.exports = router;
