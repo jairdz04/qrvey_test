@@ -5,7 +5,7 @@
 </br> base url : http://127.0.0.1:3000/api
 </br> Run application: node server.js
 </br> Format: x-www-form-urlencoded
-To run unit test, take care, take care, the server should no be running
+</br>To run unit test,take care, the server should not be running
 </br> 
 </p>
 <h3>Projects</h3>
