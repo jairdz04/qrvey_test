@@ -24,11 +24,11 @@ router.delete('/task/delete/:id', task.deleteTask);
 
 const time_record = require('../controllers/time_record_controller');
 const sch_time = require('../schemas/time_record');
-router.get('/time_record', time_record.getAllTimesRecords);
-router.get('/time_record/:id', time_record.getTimeRecordById);
-router.post('/time_record/add',validate(sch_time.time_record),time_record.postTimeRecord);
-router.put('/time_record/edit/:id',validate(sch_time.time_record),time_record.putTimeRecord);
-router.delete('/time_record/delete/:id', time_record.deleteTimeRecord);
+router.get('/time-record', time_record.getAllTimesRecords);
+router.get('/time-record/:id', time_record.getTimeRecordById);
+router.post('/time-record/add',validate(sch_time.time_record),time_record.postTimeRecord);
+router.put('/time-record/edit/:id',validate(sch_time.time_record),time_record.putTimeRecord);
+router.delete('/time-record/delete/:id', time_record.deleteTimeRecord);
 
 const project_task = require('../controllers/project_task_controller');
 const sch_project_task = require('../schemas/project_task');
