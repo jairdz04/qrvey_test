@@ -23,8 +23,8 @@
   NOTE: the id_task is a numeric number created based on the date and time of the record. In that sense we can sort from more recent to the oldest just using de id_task. But, why in that way? It´s easier to use a id to make the basical operations on a record (create, read,update,delete) and i needed the guarantee that the id will not be repeated. 
 <ul>
 <li>/task , returns an array of objects with properties as a: id_task [any], id_time_record[any], name[String], date[string], finish[number between 0 and 1],description[String]  </li>
-<li>/task-by-order, returs an array of objects sorted from the most recent to the oldest</li>
-<li>/task-by-day ,returs an array of objects ordered by days</li>
+<li>/task-by-order, returs an array of objects sorted from the most recent to the oldest (Only finished tasks)</li>
+<li>/task-by-day ,returs an array of objects ordered by days (Only finished tasks)</li>
 <li>/task/:id , returns an especific task</li>
 <li>/task/add, Save a new task</li>
 <li>/task/edit/:id, Allow edit an existing task</li>
