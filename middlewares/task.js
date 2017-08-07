@@ -113,6 +113,7 @@ module.exports = {
   orderByTime: ()=>{
     return new Promise((reply, reject)=>{
       fs.readFile(file, 'utf8', (error, data)=>{
+        if(error) return reject({ details: "error cargando datos", error });
         const obj = JSON.parse(data);
         order.orderChronologically(obj,(callback)=>{
             //if callback.length > 0
@@ -125,6 +126,7 @@ module.exports = {
   orderByDay: ()=>{
     return new Promise((reply, reject)=>{
       fs.readFile(file, 'utf8', (error, data)=>{
+        if(error) return reject({ details: "error cargando datos", error });
         const obj = JSON.parse(data);
         order.orderByDay(obj, callback=>{
           return reply(callback);
