@@ -115,6 +115,7 @@ module.exports = {
       fs.readFile(file, 'utf8', (error, data)=>{
         const obj = JSON.parse(data);
         order.orderChronologically(obj,(callback)=>{
+            //if callback.length > 0
              return reply(callback);
         });
       });
@@ -126,9 +127,8 @@ module.exports = {
       fs.readFile(file, 'utf8', (error, data)=>{
         const obj = JSON.parse(data);
         order.orderByDay(obj, callback=>{
-          console.log(callback);
+          return reply(callback);
         });
-        return reply({details: "true"});
       });
     })
 
