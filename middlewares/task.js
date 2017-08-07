@@ -114,11 +114,9 @@ module.exports = {
     return new Promise((reply, reject)=>{
       fs.readFile(file, 'utf8', (error, data)=>{
         const obj = JSON.parse(data);
-
-        order.orderChronologically(obj,'id_task',(callback)=>{
-            console.log(callback);
+        order.orderChronologically(obj,(callback)=>{
+             return reply(callback);
         });
-        return reply({details: "true"});
       });
     })
   },

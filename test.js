@@ -102,7 +102,7 @@ describe('Posts', ()=> {
 		    .end((err, res) =>{
 		        if (err) done(err);
 		        res.should.have.status(200);
-		        res.body.should.have.property('details');
+                res.body.should.have.property('details').eql("Saved correctly");
 		        done();
 		     });
 		 });
@@ -121,6 +121,7 @@ describe('Posts', ()=> {
 		    .end((err, res) =>{
 		        if (err) done(err);
 		        res.should.have.status(200);
+                res.body.should.have.property('details').eql("Saved correctly");
 		        done();
 		     });
         });
@@ -140,6 +141,7 @@ describe('Posts', ()=> {
 		    .end((err, res)=>{
 		        if (err) done(err);
 		        res.should.have.status(200);
+                res.body.should.have.property('details').eql("Saved correctly");
 		        done();
 		     });
         });
@@ -154,6 +156,7 @@ describe('Posts', ()=> {
 		    .end((err, res)=> {
 		        if (err) done(err);
 		        res.should.have.status(200);
+                res.body.should.have.property('details').eql("Saved correctly");
 		        done();
 		    });
         });
@@ -173,6 +176,7 @@ describe('Put by id', ()=> {
             .send(project)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('details').eql("Updated correctly");
               done();
             });
         });
@@ -191,6 +195,7 @@ describe('Put by id', ()=> {
             .send(task)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('details').eql("Updated correctly");
               done();
             });
         });
@@ -210,6 +215,7 @@ describe('Put by id', ()=> {
             .send(time_records)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('details').eql("Updated correctly");
               done();
             });
         });
@@ -224,6 +230,7 @@ describe('deletes', () =>{
             .get('/api/project/delete/' + id_project)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('details').eql("Deleted correctly");
               	done();
             });
         });
@@ -234,6 +241,7 @@ describe('deletes', () =>{
             .get('/api/task/delete/' + id_task)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('details').eql("Deleted correctly");
               	done();
             });
         });
@@ -244,6 +252,7 @@ describe('deletes', () =>{
             .get('/api/time-record/delete/' + id_time_record)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.should.have.property('details').eql("Deleted correctly");
               	done();
             });
         });

@@ -1,10 +1,17 @@
 module.exports = {
-	orderChronologically: (data,key,callback)=>{
+	orderChronologically: (data,callback)=>{
+		var finished = [];
 		for(var i in data){
 			if(data[i].finish == 1){
-			 console.log(data[i]);			
+				finished.push(data[i]);
 			}
 		}
+		
+		finished.sort((a,b)=>{
+			return a.id_task - b.id_task;
+		});
+		return callback(finished);
+		//console.log(data.reverse());
 	},
 
 	orderByDay: (data, callback)=>{
